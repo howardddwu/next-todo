@@ -1,6 +1,6 @@
 "use client";
-import { prisma } from "../app/db";
-import { useRouter } from "next/navigation";
+import { log } from "console";
+import { redirect } from "next/navigation";
 
 type TodoItemProps = {
   id: string;
@@ -17,12 +17,11 @@ export function TodoItem({
   toggleTodo,
   deleteTodo,
 }: TodoItemProps) {
-  const router = useRouter();
-  //   const handleOnClick = () => {
-  //     deleteTodo(id);
-  //     refreshData();
-  //   };
-
+  const handleOnclick = () => {
+    deleteTodo(id);
+    redirect("/new");
+    console.log(id);
+  };
   return (
     <li className="flex gap-2 items-center">
       <input
@@ -42,7 +41,7 @@ export function TodoItem({
       <button
         className="text-red-400 cursor-pointer"
         onClick={() => {
-          deleteTodo(id);
+          handleOnclick();
         }}
       >
         X

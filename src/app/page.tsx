@@ -21,7 +21,7 @@ export default async function Home() {
     "use server";
     await prisma.todo.delete({ where: { id } });
 
-    redirect("/");
+    //redirect("/new");
   }
 
   return (
